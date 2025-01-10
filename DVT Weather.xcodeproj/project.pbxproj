@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E7DE28E12D31A99F00DDC5B0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = E7DE28E02D31A99F00DDC5B0 /* GRDB */; };
+		E7DE29292D31C5EC00DDC5B0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7DE29282D31C5EC00DDC5B0 /* Debug.xcconfig */; };
+		E7DE292D2D31C83B00DDC5B0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		E7DE28942D31218C00DDC5B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +33,26 @@
 		E7DE28822D31218A00DDC5B0 /* DVT Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DVT Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DE28932D31218C00DDC5B0 /* DVT WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DVT WeatherTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7DE289D2D31218C00DDC5B0 /* DVT WeatherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DVT WeatherUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7DE29282D31C5EC00DDC5B0 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E7DE292B2D31C6C700DDC5B0 /* Exceptions for "DVT Weather" folder in "DVT Weather" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"DVT-Weather-Info.plist",
+			);
+			target = E7DE28812D31218A00DDC5B0 /* DVT Weather */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E7DE28842D31218A00DDC5B0 /* DVT Weather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E7DE292B2D31C6C700DDC5B0 /* Exceptions for "DVT Weather" folder in "DVT Weather" target */,
+			);
 			path = "DVT Weather";
 			sourceTree = "<group>";
 		};
@@ -52,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DE28E12D31A99F00DDC5B0 /* GRDB in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +97,8 @@
 		E7DE28792D31218A00DDC5B0 = {
 			isa = PBXGroup;
 			children = (
+				E7DE29282D31C5EC00DDC5B0 /* Debug.xcconfig */,
+				E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */,
 				E7DE28842D31218A00DDC5B0 /* DVT Weather */,
 				E7DE28962D31218C00DDC5B0 /* DVT WeatherTests */,
 				E7DE28A02D31218C00DDC5B0 /* DVT WeatherUITests */,
@@ -112,6 +136,7 @@
 			);
 			name = "DVT Weather";
 			packageProductDependencies = (
+				E7DE28E02D31A99F00DDC5B0 /* GRDB */,
 			);
 			productName = "DVT Weather";
 			productReference = E7DE28822D31218A00DDC5B0 /* DVT Weather.app */;
@@ -195,6 +220,9 @@
 			);
 			mainGroup = E7DE28792D31218A00DDC5B0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E7DE28DF2D31A99F00DDC5B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E7DE28832D31218A00DDC5B0 /* Products */;
 			projectDirPath = "";
@@ -212,6 +240,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7DE292D2D31C83B00DDC5B0 /* Release.xcconfig in Resources */,
+				E7DE29292D31C5EC00DDC5B0 /* Debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +301,7 @@
 /* Begin XCBuildConfiguration section */
 		E7DE28A52D31218C00DDC5B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7DE29282D31C5EC00DDC5B0 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -332,6 +363,7 @@
 		};
 		E7DE28A62D31218C00DDC5B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -396,6 +428,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DVT-Weather-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -404,8 +437,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -436,6 +469,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "DVT-Weather-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -444,8 +478,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -593,6 +627,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7DE28DF2D31A99F00DDC5B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/groue/GRDB.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7DE28E02D31A99F00DDC5B0 /* GRDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7DE28DF2D31A99F00DDC5B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
+			productName = GRDB;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E7DE287A2D31218A00DDC5B0 /* Project object */;
 }
