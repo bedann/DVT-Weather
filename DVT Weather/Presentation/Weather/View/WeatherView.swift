@@ -11,10 +11,21 @@ import SwiftUI
 struct WeatherView:View {
     
     var body: some View {
-        Text("Weather view loading.")
+        GeometryReader{ proxy in
+            VStack(spacing: 0){
+                CurrentView(width: proxy.size.width, topSafeArea: proxy.safeAreaInsets.top)
+                WeeklyView()
+            }
+            .background(Color("cloudy"))
+        }
     }
     
 }
+
+
+
+
+
 
 #Preview {
     ContentView()
