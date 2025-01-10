@@ -388,10 +388,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "DVT Weather/DVT_Weather.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "DVT Weather/Core/Resources/DVT_Weather.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DVT Weather/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DVT Weather/Core/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = L643TNX5VD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -427,10 +427,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "DVT Weather/DVT_Weather.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "DVT Weather/Core/Resources/DVT_Weather.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DVT Weather/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"DVT Weather/Core/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = L643TNX5VD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
