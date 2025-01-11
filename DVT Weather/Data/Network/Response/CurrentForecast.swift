@@ -5,12 +5,15 @@
 //  Created by Bedan Kimani on 10/01/2025.
 //
 
-struct CurrentForecast:Codable {
-    let dt:Int64
+struct CurrentForecast:Codable,Identifiable {
+    let dt:Double
     let main:Main
     let weather:[Weather]
-    let name:String
-    let id:Int
+    let name:String?
+    
+    var id:Double{
+        dt
+    }
 }
 
 struct Weather:Codable {
@@ -28,3 +31,32 @@ struct Main:Codable {
     let humidity:Double
 }
 
+extension CurrentForecast{
+    
+    var resourceId:String{
+        switch weather.first?.main ?? ""{
+        case let x where x.localizedCaseInsensitiveContains("rain"):
+            "rainy"
+        case let x where x.localizedCaseInsensitiveContains("cloud"):
+            "cloudy"
+        default:
+            "sunny"
+        }
+    }
+    
+    var icon:String{
+        return CurrentForecast.iconResource(for: weather.first?.main ?? "")
+    }
+    
+    static func iconResource(for name:String)->String{
+        switch name{
+        case let x where x.localizedCaseInsensitiveContains("rain"):
+            "rain"
+        case let x where x.localizedCaseInsensitiveContains("cloud"):
+            "partlysunny"
+        default:
+            "clear"
+        }
+    }
+    
+}

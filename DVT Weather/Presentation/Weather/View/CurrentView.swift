@@ -8,23 +8,25 @@ import SwiftUI
 
 struct CurrentView:View {
     
+    let currentForecast:CurrentForecast?
     let width:CGFloat
     let topSafeArea:CGFloat
     
     var body: some View {
         VStack(){
-            Text(Measurement(value: 18, unit: UnitTemperature.celsius), format: .measurement(width: .narrow))
-                .font(.system(size: 70, weight: .regular))
-            
-            Text("CLOUDY")
-                .font(.title)
-            
+            if let currentForecast{
+                TemperatureText(value: currentForecast.main.temp.celcius)
+                    .font(.system(size: 70, weight: .regular))
+                
+                Text(currentForecast.weather[safe: 0]?.main.uppercased() ?? "")
+                    .font(.title)
+            }
         }
         .foregroundStyle(.white)
         .padding()
         .frame(maxWidth: .infinity, minHeight: (width * 0.86) - topSafeArea, alignment: .top)
         .background{
-            Image("sea_cloudy")
+            Image("sea_\(currentForecast?.resourceId ?? "cloudy")")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea(edges: .all)

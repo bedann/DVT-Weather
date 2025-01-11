@@ -37,22 +37,9 @@
 		E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		E7DE292B2D31C6C700DDC5B0 /* Exceptions for "DVT Weather" folder in "DVT Weather" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"DVT-Weather-Info.plist",
-			);
-			target = E7DE28812D31218A00DDC5B0 /* DVT Weather */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E7DE28842D31218A00DDC5B0 /* DVT Weather */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				E7DE292B2D31C6C700DDC5B0 /* Exceptions for "DVT Weather" folder in "DVT Weather" target */,
-			);
 			path = "DVT Weather";
 			sourceTree = "<group>";
 		};

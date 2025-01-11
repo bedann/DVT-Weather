@@ -10,13 +10,21 @@ import SwiftUI
 
 struct WeatherView:View {
     
+    @StateObject var viewModel = WeatherViewModel()
+    
     var body: some View {
         GeometryReader{ proxy in
             VStack(spacing: 0){
-                CurrentView(width: proxy.size.width, topSafeArea: proxy.safeAreaInsets.top)
-                WeeklyView()
+                CurrentView(
+                    currentForecast: viewModel.forecast?.currentForecast,
+                    width: proxy.size.width,
+                    topSafeArea: proxy.safeAreaInsets.top
+                )
+                WeeklyView(
+                    forecast: viewModel.forecast
+                )
             }
-            .background(Color("cloudy"))
+            .background(Color(viewModel.forecast?.currentForecast?.resourceId ?? "cloudy"))
         }
     }
     

@@ -30,9 +30,9 @@ class DefaultWeatherRepository:WeatherRepository{
             currentForecastPublisher(lat: lat, lon: lon),
             weekForecastPublisher(lat: lat, lon: lon)
         )
-        .subscribe(on: DispatchQueue.global(qos: .background))
+        .subscribe(on: DispatchQueue.global(qos: .userInitiated))
         .map{ (current, weekly) in
-            DayForecast(currentForecast: current, weekForecast: weekly, location: current.name, locationId: current.id)
+            DayForecast(currentForecast: current, weekForecast: weekly, location: weekly.city.name, locationId: weekly.city.id)
         }
         .flatMap{[dbService] forecast in
             return dbService.saveForecast(forecast)
