@@ -10,21 +10,29 @@ import SwiftUI
 
 struct WeatherView:View {
     
-    @StateObject var viewModel = WeatherViewModel()
+    @StateObject var weather = WeatherViewModel()
+    @EnvironmentObject var locations:LocationsViewModel
     
     var body: some View {
         GeometryReader{ proxy in
             VStack(spacing: 0){
                 CurrentView(
-                    currentForecast: viewModel.forecast?.currentForecast,
+                    currentForecast: weather.forecast?.currentForecast,
                     width: proxy.size.width,
                     topSafeArea: proxy.safeAreaInsets.top
                 )
                 WeeklyView(
-                    forecast: viewModel.forecast
+                    forecast: weather.forecast
                 )
+                
+                Text(weather.forecast?.location ?? "--")
             }
-            .background(Color(viewModel.forecast?.currentForecast?.resourceId ?? "cloudy"))
+            .background(Color(weather.forecast?.currentForecast?.resourceId ?? "cloudy"))
+        }
+        .onChange(of: locations.myLocation) { oldValue, newValue in
+            if let newValue, newValue.id != oldValue?.id {
+                weather.fetchForecast(location: newValue)
+            }
         }
     }
     

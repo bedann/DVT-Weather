@@ -9,6 +9,7 @@ import Foundation
 
 class DefaultWeatherRepository:WeatherRepository{
     
+    
     private let client = DefaultClient<WeatherApi>()
     private let dbService:DBService
     
@@ -17,32 +18,30 @@ class DefaultWeatherRepository:WeatherRepository{
         
     }
     
-    func fetchForecast(locationId:Int? = nil, lat: Double, lon: Double) -> AnyPublisher<DayForecast?,Error> {
+    func fetchCachedForecast(locationId: String) -> AnyPublisher<DayForecast?, any Error> {
+        dbService.loadForecast(for: locationId).eraseToAnyPublisher()
+    }
+    
+    func fetchForecast(locationId:String, lat: Double, lon: Double) -> AnyPublisher<DayForecast?,Error> {
         Publishers.Merge(
             dbService.loadForecast(for: locationId),
-            forecastRemotePublisher(lat: lat, lon: lon)
+            forecastRemotePublisher(locationId: locationId, lat: lat, lon: lon)
         )
         .eraseToAnyPublisher()
     }
     
-    private func forecastRemotePublisher(lat: Double, lon: Double) -> AnyPublisher<DayForecast?, Error> {
+    private func forecastRemotePublisher(locationId:String, lat: Double, lon: Double) -> AnyPublisher<DayForecast?, Error> {
         Publishers.Zip(
             currentForecastPublisher(lat: lat, lon: lon),
             weekForecastPublisher(lat: lat, lon: lon)
         )
         .subscribe(on: DispatchQueue.global(qos: .userInitiated))
         .map{ (current, weekly) in
-            DayForecast(currentForecast: current, weekForecast: weekly, location: weekly.city.name, locationId: weekly.city.id)
+            DayForecast(currentForecast: current, weekForecast: weekly, location: weekly.city.name, locationId: locationId)
         }
         .flatMap{[dbService] forecast in
             return dbService.saveForecast(forecast)
         }
-//        .catch({ error -> AnyPublisher<DayForecast?,Error> in
-//            if error.isOfflineError{
-//                return Just(nil).setFailureType(to: Error.self).eraseToAnyPublisher()
-//            }
-//            return Fail(error: error).eraseToAnyPublisher()
-//        })
         .eraseToAnyPublisher()
     }
     

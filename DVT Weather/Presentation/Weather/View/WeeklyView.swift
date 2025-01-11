@@ -45,6 +45,7 @@ struct WeeklyView:View {
                 .font(.subheadline)
         }
         .frame(maxWidth: .infinity)
+        .foregroundStyle(.white)
     }
 }
 

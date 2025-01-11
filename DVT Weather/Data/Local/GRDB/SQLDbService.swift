@@ -6,6 +6,7 @@
 //
 import Foundation
 import Combine
+import GRDB
 
 class SQLDbService:DBService {
     
@@ -15,16 +16,17 @@ class SQLDbService:DBService {
         self.database = database
     }
     
-    func loadForecast(for cityId: Int?) -> AnyPublisher<DayForecast?,Error> {
+    func loadForecast(for locationId: String?) -> AnyPublisher<DayForecast?,Error> {
         return database.getDb().readPublisher { db in
             return try DayForecast.fetchOne(
                 db,
                 sql: "SELECT * FROM \(DayForecast.databaseTableName) WHERE locationId = ? ORDER BY date DESC LIMIT 1",
-                arguments: [cityId]
+                arguments: [locationId]
             )
         }
         .eraseToAnyPublisher()
     }
+    
     
     func saveForecast(_ forecast: DayForecast) -> AnyPublisher<DayForecast?, Error> {
         return database.getDb().writePublisher { db in
@@ -33,6 +35,23 @@ class SQLDbService:DBService {
         .eraseToAnyPublisher()
     }
     
+    
+    func fetchLocations() -> AnyPublisher<[LocationForecast], any Error> {
+        return database.getDb().readPublisher { db in
+            return try LocationEntity
+                .including(all: LocationEntity.forecast.order(Column("date").desc))
+                .asRequest(of: LocationForecast.self)
+                .fetchAll(db)
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func saveLocation(_ location: LocationEntity) -> AnyPublisher<LocationEntity?, Error> {
+        return database.getDb().writePublisher { db in
+            try location.saved(db, onConflict: .replace)
+        }
+        .eraseToAnyPublisher()
+    }
     
     
 }

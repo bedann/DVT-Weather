@@ -12,4 +12,6 @@ extension DayForecast:FetchableRecord, PersistableRecord {
     
     static var databaseTableName: String = "forecast"
     
+    static let location = belongsTo(LocationEntity.self, using: ForeignKey(["locationId"])).forKey("location")
+    
 }

@@ -8,6 +8,8 @@ import Combine
 
 protocol WeatherRepository{
     
-    func fetchForecast(locationId:Int?, lat: Double, lon: Double) -> AnyPublisher<DayForecast?, Error>
+    func fetchForecast(locationId:String, lat: Double, lon: Double) -> AnyPublisher<DayForecast?, Error>
     
+    func fetchCachedForecast(locationId:String) -> AnyPublisher<DayForecast?, Error>
+        
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject var locations = LocationsViewModel()
+    
     var body: some View {
         TabView {
             WeatherView()
@@ -16,11 +18,12 @@ struct ContentView: View {
                     Label("Weather", systemImage: "cloud.sun.rain")
                 }
             
-            VStack(){}
+            LocationsView()
                 .tabItem {
                     Label("Locations", systemImage: "map")
                 }
         }
+        .environmentObject(locations)
     }
 }
 

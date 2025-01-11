@@ -11,8 +11,12 @@ import Combine
 
 protocol DBService{
     
-    func loadForecast(for cityId: Int?) -> AnyPublisher<DayForecast?,Error>
-    
+    func loadForecast(for locationId: String?) -> AnyPublisher<DayForecast?,Error>
+        
     func saveForecast(_ forecast: DayForecast) -> AnyPublisher<DayForecast?,Error>
+    
+    func fetchLocations() -> AnyPublisher<[LocationForecast],Error>
+    
+    func saveLocation(_ location: LocationEntity) -> AnyPublisher<LocationEntity?,Error>
     
 }

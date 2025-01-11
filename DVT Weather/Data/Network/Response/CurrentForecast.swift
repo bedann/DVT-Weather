@@ -48,6 +48,10 @@ extension CurrentForecast{
         return CurrentForecast.iconResource(for: weather.first?.main ?? "")
     }
     
+    var iconUrl:String{
+        return "https://openweathermap.org/img/wn/\(weather[0].icon).png"
+    }
+    
     static func iconResource(for name:String)->String{
         switch name{
         case let x where x.localizedCaseInsensitiveContains("rain"):

@@ -17,6 +17,7 @@ extension AppDatabase{
         #endif
         
         migrator.registerMigration("1.0") { db in
+            try createLocationsTable(db)
             try createWeatherTable(db)
         }
         
@@ -31,8 +32,18 @@ extension AppDatabase{
             t.column("currentForecast", .jsonText)
             t.column("weekForecast", .jsonText)
             t.column("location", .text)
-            t.column("locationId", .integer)
+            t.column("locationId", .jsonText)
             t.primaryKey(["date", "locationId"])
+        }
+    }
+    
+    private func createLocationsTable(_ db: Database) throws{
+        try db.create(table: LocationEntity.databaseTableName) { t in
+            t.column("id", .text).primaryKey(onConflict: .replace)
+            t.column("name", .text)
+            t.column("fullAddress", .text)
+            t.column("lat", .double)
+            t.column("lon", .double)
         }
     }
     

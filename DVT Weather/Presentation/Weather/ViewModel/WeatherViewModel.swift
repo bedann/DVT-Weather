@@ -19,14 +19,20 @@ class WeatherViewModel:ObservableObject{
     
     init(repository:WeatherRepository = DefaultWeatherRepository()){
         self.repository = repository
-        fetchForecast()
     }
     
-    func fetchForecast(){
+    func fetchForecast(location:Location){
+        guard
+            let latitude = location.lat,
+            let longitude = location.lon,
+            let locationId = location.id
+        else{
+            return
+        }
         withAnimation{
             self.loading = true
         }
-        repository.fetchForecast(locationId: nil, lat: -1.2156928, lon: 36.8672768)
+        repository.fetchForecast(locationId: locationId, lat: latitude, lon: longitude)
             .receive(on: DispatchQueue.main)
             .sink {[weak self] completion in
                 withAnimation{

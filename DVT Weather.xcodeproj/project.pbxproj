@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E73B2D2A2D3300880005A43D /* GooglePlacesSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E73B2D292D3300880005A43D /* GooglePlacesSwift */; };
+		E73B2D2D2D3300C40005A43D /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = E73B2D2C2D3300C40005A43D /* GooglePlaces */; };
 		E7DE28E12D31A99F00DDC5B0 /* GRDB in Frameworks */ = {isa = PBXBuildFile; productRef = E7DE28E02D31A99F00DDC5B0 /* GRDB */; };
 		E7DE29292D31C5EC00DDC5B0 /* Debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7DE29282D31C5EC00DDC5B0 /* Debug.xcconfig */; };
 		E7DE292D2D31C83B00DDC5B0 /* Release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */; };
@@ -60,7 +62,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73B2D2D2D3300C40005A43D /* GooglePlaces in Frameworks */,
 				E7DE28E12D31A99F00DDC5B0 /* GRDB in Frameworks */,
+				E73B2D2A2D3300880005A43D /* GooglePlacesSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E73B2D2B2D3300C40005A43D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E7DE28792D31218A00DDC5B0 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +100,7 @@
 				E7DE28842D31218A00DDC5B0 /* DVT Weather */,
 				E7DE28962D31218C00DDC5B0 /* DVT WeatherTests */,
 				E7DE28A02D31218C00DDC5B0 /* DVT WeatherUITests */,
+				E73B2D2B2D3300C40005A43D /* Frameworks */,
 				E7DE28832D31218A00DDC5B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -124,6 +136,8 @@
 			name = "DVT Weather";
 			packageProductDependencies = (
 				E7DE28E02D31A99F00DDC5B0 /* GRDB */,
+				E73B2D292D3300880005A43D /* GooglePlacesSwift */,
+				E73B2D2C2D3300C40005A43D /* GooglePlaces */,
 			);
 			productName = "DVT Weather";
 			productReference = E7DE28822D31218A00DDC5B0 /* DVT Weather.app */;
@@ -209,6 +223,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				E7DE28DF2D31A99F00DDC5B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */,
+				E73B2D282D3300880005A43D /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = E7DE28832D31218A00DDC5B0 /* Products */;
@@ -416,6 +431,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DVT-Weather-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find your current location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -426,7 +442,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -457,6 +472,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DVT-Weather-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Find your current location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -467,7 +483,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -616,6 +631,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E73B2D282D3300880005A43D /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.2.0;
+			};
+		};
 		E7DE28DF2D31A99F00DDC5B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/groue/GRDB.swift.git";
@@ -627,6 +650,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E73B2D292D3300880005A43D /* GooglePlacesSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E73B2D282D3300880005A43D /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlacesSwift;
+		};
+		E73B2D2C2D3300C40005A43D /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E73B2D282D3300880005A43D /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlaces;
+		};
 		E7DE28E02D31A99F00DDC5B0 /* GRDB */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E7DE28DF2D31A99F00DDC5B0 /* XCRemoteSwiftPackageReference "GRDB.swift" */;
