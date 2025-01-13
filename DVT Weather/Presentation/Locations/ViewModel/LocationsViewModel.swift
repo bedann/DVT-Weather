@@ -14,9 +14,11 @@ import CoreLocation
 class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
+    @Published var mainTab:Int = 0
     @Published var error:String? = nil
     @Published var locations:[Location] = []
     @Published var myLocation:Location? = nil
+    @Published var selectedLocation:Location? = nil
     
     private var cancellables:Set<AnyCancellable> = []
     let repository:LocationRepository
@@ -48,6 +50,8 @@ class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
             .sink {[weak self] completion in
                 if case .failure(let error) = completion {
                     self?.error = error.localizedDescription
+                }else{
+                    self?.getLocations()
                 }
             } receiveValue: { _ in
                 
@@ -103,6 +107,8 @@ class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
                     lat: mostLikelyPlace.coordinate.latitude,
                     lon: mostLikelyPlace.coordinate.longitude
                   )
+                  self?.selectedLocation = self?.myLocation
+                  self?.getCurrentLocationCachedWeather()
               }
           }
         })
@@ -115,12 +121,33 @@ class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         weatherRepository.fetchCachedForecast(locationId: locationId)
             .receive(on: DispatchQueue.main)
             .compactMap{ $0 }
-            .sink { completion in
-                
+            .sink {[weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.error = error.localizedDescription
+                }
             } receiveValue: {[weak self] forecast in
                 self?.myLocation?.forecast = [forecast]
+                self?.selectedLocation?.forecast = [forecast]
             }
             .store(in: &cancellables)
+    }
+    
+    func deleteLocation(location: Location) {
+        guard let locationId = location.id else {
+            return
+        }
+        repository.deleteLocation(locationId)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                if case .failure(let error) = completion {
+                    self.error = error.localizedDescription
+                }
+            }, receiveValue: { deleted in
+                if deleted{
+                    self.locations.removeAll(where: { $0.id == location.id })
+                }
+            })
+        .store(in: &cancellables)
     }
     
 }

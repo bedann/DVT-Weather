@@ -14,4 +14,8 @@ protocol LocationRepository{
     
     func saveLocation(_ location: Location) -> AnyPublisher<Location, Error>
     
+    func deleteLocation(_ id: String) -> AnyPublisher<Bool, Error>
+    
+    func geoCodeLocation(_ name: String) -> AnyPublisher<GeoCodeLocationResultResponse?, Error>
+    
 }

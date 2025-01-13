@@ -12,8 +12,9 @@ struct ContentView: View {
     @StateObject var locations = LocationsViewModel()
     
     var body: some View {
-        TabView {
+        TabView(selection: $locations.mainTab) {
             WeatherView()
+                .tag(0)
                 .tabItem{
                     Label("Weather", systemImage: "cloud.sun.rain")
                 }
@@ -22,6 +23,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Locations", systemImage: "map")
                 }
+                .tag(1)
         }
         .environmentObject(locations)
     }

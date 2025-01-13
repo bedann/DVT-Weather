@@ -25,11 +25,14 @@ struct WeatherView:View {
                     forecast: weather.forecast
                 )
                 
-                Text(weather.forecast?.location ?? "--")
+                Text(locations.selectedLocation?.name ?? "--")
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .padding(.bottom)
             }
             .background(Color(weather.forecast?.currentForecast?.resourceId ?? "cloudy"))
         }
-        .onChange(of: locations.myLocation) { oldValue, newValue in
+        .onChange(of: locations.selectedLocation) { oldValue, newValue in
             if let newValue, newValue.id != oldValue?.id {
                 weather.fetchForecast(location: newValue)
             }

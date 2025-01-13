@@ -53,5 +53,12 @@ class SQLDbService:DBService {
         .eraseToAnyPublisher()
     }
     
+    func deleteLocation(_ id: String) -> AnyPublisher<Bool, any Error> {
+        return database.getDb().writePublisher { db in
+            try LocationEntity.deleteOne(db, key: id)
+        }
+        .eraseToAnyPublisher()
+    }
+    
     
 }

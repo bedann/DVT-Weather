@@ -10,6 +10,7 @@ import SwiftUI
 struct LocationsView:View {
     
     @State var selectedViewType:String = "Map"
+    @State var showAddLocation = false
     @EnvironmentObject var locations:LocationsViewModel
     
     public var body: some View {
@@ -37,11 +38,18 @@ struct LocationsView:View {
             }
             .toolbar{
                 ToolbarItem{
-                    Button(action:{}){
+                    Button(action:{
+                        showAddLocation = true
+                    }){
                         Image(systemName: "plus")
                     }
                 }
             }
+            .sheet(isPresented: $showAddLocation, content: {
+                LocationSearchView(onLocationSaved:{
+                    locations.locations.insert($0, at: 0)
+                })
+            })
             .navigationBarTitle("Saved Locations")
             .onAppear{
                 locations.getLocations()

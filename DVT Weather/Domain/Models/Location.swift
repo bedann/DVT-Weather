@@ -5,6 +5,7 @@
 //  Created by Bedan Kimani on 12/01/2025.
 //
 import Foundation
+import MapKit
 
 struct Location: Codable, Identifiable,Equatable{
     var id:String? = nil
@@ -17,3 +18,10 @@ struct Location: Codable, Identifiable,Equatable{
 }
 
 
+extension Location{
+    
+    var coordinate:CLLocationCoordinate2D{
+        .init(latitude:lat ?? 0, longitude:lon ?? 0)
+    }
+    
+}

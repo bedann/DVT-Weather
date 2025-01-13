@@ -74,7 +74,7 @@ class DefaultClient<Endpoint:ApiRequest>:ApiClient{
                     }
                     throw ApiError.invalidResponse
                 }
-//                let string = String(data: data, encoding: .utf8)
+                let string = String(data: data, encoding: .utf8)
 //                let jsonData = try JSONSerialization.data(withJSONObject: data)
                 let decoder = JSONDecoder()
                 do {

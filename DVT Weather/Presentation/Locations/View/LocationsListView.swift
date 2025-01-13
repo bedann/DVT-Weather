@@ -16,22 +16,61 @@ struct LocationsListView: View {
         List{
             
             if let myLocation = locations.myLocation {
+                Text("My current location")
+                    .font(.caption)
+                    .listRowSeparator(.hidden)
                 LocationCard(location: myLocation, current: true)
                     .listRowSeparator(.hidden)
+                    .contentShape(.rect)
+                    .onTapGesture {
+                        locations.mainTab = 0
+                        locations.selectedLocation = myLocation
+                    }
                 if !locations.isCurrentLocationSaved {
-                    Button("Save Current Location"){
+                    PrimaryButton(text: "Save Current Location"){
                         locations.saveLocation(myLocation)
                     }
+                    .buttonStyle(.plain)
                 }
             }
             
-            Text("Other Locations")
-                .listRowSeparator(.hidden)
-            
-            ForEach(locations.locations){ location in
-                LocationCard(location: location)
+            if !locations.locations.isEmpty{
+                Text("Other Locations")
+                    .font(.caption)
+                    .listRowSeparator(.hidden)
             }
-            .onDelete(perform: {_ in })
+            
+            ForEach(locations.locations.filter({ $0.id != locations.myLocation?.id })){ location in
+                LocationCard(location: location)
+                    .contentShape(.rect)
+                    .onTapGesture {
+                        withAnimation{
+                            locations.mainTab = 0
+                            locations.selectedLocation = location
+                        }
+                    }
+            }
+            .onDelete { indexSet in
+                if let index = indexSet.first{
+                    locations.deleteLocation(location: locations.locations[index])
+                }
+            }
+            
+            if locations.locations.isEmpty{
+                Image("empty_locations")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(Color.placeholderText)
+                    .frame(width: 100, height: 100)
+                    .listRowSeparator(.hidden)
+            }else{
+                Text("Swipe left to delete")
+                    .font(.caption)
+                    .opacity(0.5)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top)
+                    .listRowSeparator(.hidden)
+            }
         }
         .listStyle(.plain)
     }

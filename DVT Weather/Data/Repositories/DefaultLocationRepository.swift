@@ -10,7 +10,8 @@ import Foundation
 
 class DefaultLocationRepository:LocationRepository{
     
-//    private let client = DefaultClient<WeatherApi>()
+    
+    private let client = DefaultClient<LocationsApi>()
     private let dbService:DBService
     
     init(dbService: DBService = SQLDbService(database: .shared)) {
@@ -35,4 +36,12 @@ class DefaultLocationRepository:LocationRepository{
             .eraseToAnyPublisher()
     }
     
+    
+    func geoCodeLocation(_ name: String) -> AnyPublisher<GeoCodeLocationResultResponse?, any Error> {
+        client.fetch(from: .geocode(query: name)).eraseToAnyPublisher()
+    }
+    
+    func deleteLocation(_ id: String) -> AnyPublisher<Bool, any Error> {
+        dbService.deleteLocation(id).eraseToAnyPublisher()
+    }
 }

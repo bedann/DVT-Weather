@@ -37,8 +37,8 @@ extension WeekForecast{
     //Groups the forecast by weekday, calculating a summary of the day for an overview of the day's weather
     var summary:[Summary]{
         let groups = Dictionary(grouping: list, by: { $0.dt.date.toWeekDay() })
-        
-        return groups.map{ day, forecast in
+        let daySort = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+        return groups.sorted(by: { daySort.firstIndex(of: $0.key)! < daySort.firstIndex(of: $1.key)! }).map{ day, forecast in
             let averageTemperature = forecast.reduce(0){ $0 + $1.main.temp } / Double(forecast.count)
             
             var frequencyDict:[String:Int]  = [:]

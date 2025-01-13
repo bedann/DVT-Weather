@@ -19,4 +19,6 @@ protocol DBService{
     
     func saveLocation(_ location: LocationEntity) -> AnyPublisher<LocationEntity?,Error>
     
+    func deleteLocation(_ id:String) -> AnyPublisher<Bool,Error>
+    
 }
