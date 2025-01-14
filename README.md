@@ -16,6 +16,7 @@ The project uses a simplified version of clean architecture with the following l
 ### 3rd party libraries used
 1. [GRDB](https://github.com/groue/GRDB.swift) for local persistence. Used to save forecast and location details for offline use
 2. [GooglePlaces](https://github.com/googlemaps/ios-places-sdk) for location search and location details
+3. Only the 3 provided icons were used apart from the saved locations list view, which uses openweathermap icons
 
 Tests not exhaustive, just a little to demonstrate. 
 
