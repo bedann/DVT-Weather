@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LocationsView:View {
     
-    @State var selectedViewType:String = "Map"
+    @State var selectedViewType:String = "List"
     @State var showAddLocation = false
     @EnvironmentObject var locations:LocationsViewModel
     

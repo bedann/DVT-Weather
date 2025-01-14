@@ -11,10 +11,11 @@ import Foundation
 import GooglePlaces
 import CoreLocation
 
-class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationsViewModel: NetworkAware, ObservableObject, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
     @Published var mainTab:Int = 0
+    @Published var locationAuthorized:Bool = false
     @Published var error:String? = nil
     @Published var locations:[Location] = []
     @Published var myLocation:Location? = nil
@@ -35,12 +36,12 @@ class LocationsViewModel: NSObject, ObservableObject, CLLocationManagerDelegate 
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         locationManager.requestWhenInUseAuthorization()
     }
-    
+   
     
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse{
-            getCurrentLocation()
+            self.locationAuthorized = true
         }
     }
     

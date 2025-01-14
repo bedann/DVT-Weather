@@ -33,6 +33,11 @@ struct WeatherView:View {
             }
             .background(Color(weather.forecast?.currentForecast?.resourceId ?? "cloudy"))
         }
+        .onChange(of: locations.networkAvailable, { previouslyConnected, currentlyConnected in
+            if ((!previouslyConnected && currentlyConnected) || !currentlyConnected) && locations.locationAuthorized {
+                locations.getCurrentLocation()
+            }
+        })
         .onChange(of: locations.selectedLocation) { oldValue, newValue in
             if let newValue, newValue.id != oldValue?.id {
                 weather.fetchForecast(location: newValue)
