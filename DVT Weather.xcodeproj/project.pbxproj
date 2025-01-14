@@ -50,11 +50,6 @@
 			path = "DVT WeatherTests";
 			sourceTree = "<group>";
 		};
-		E7DE28A02D31218C00DDC5B0 /* DVT WeatherUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "DVT WeatherUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +94,6 @@
 				E7DE292C2D31C83B00DDC5B0 /* Release.xcconfig */,
 				E7DE28842D31218A00DDC5B0 /* DVT Weather */,
 				E7DE28962D31218C00DDC5B0 /* DVT WeatherTests */,
-				E7DE28A02D31218C00DDC5B0 /* DVT WeatherUITests */,
 				E73B2D2B2D3300C40005A43D /* Frameworks */,
 				E7DE28832D31218A00DDC5B0 /* Products */,
 			);
@@ -178,9 +172,6 @@
 			);
 			dependencies = (
 				E7DE289F2D31218C00DDC5B0 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				E7DE28A02D31218C00DDC5B0 /* DVT WeatherUITests */,
 			);
 			name = "DVT WeatherUITests";
 			packageProductDependencies = (

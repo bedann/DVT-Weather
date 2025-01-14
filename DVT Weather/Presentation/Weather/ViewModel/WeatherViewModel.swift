@@ -27,6 +27,7 @@ class WeatherViewModel:ObservableObject{
             let longitude = location.lon,
             let locationId = location.id
         else{
+            self.error = "Invalid location"
             return
         }
         withAnimation{
