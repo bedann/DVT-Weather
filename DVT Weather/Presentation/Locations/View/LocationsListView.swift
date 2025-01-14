@@ -94,11 +94,11 @@ struct LocationCard: View {
     var body: some View {
         HStack(spacing: 16){
             
-            if let forecast, let icon = forecast.currentForecast?.icon {
-                Image(icon)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 50, height: 50)
+            if let forecast, let iconUrl = forecast.currentForecast?.iconUrl{
+                AsyncImage(url: URL(string: iconUrl)!){ image in
+                    image.image?.resizable()
+                }
+                .frame(width: 50, height: 50)
             }
             
             
@@ -109,6 +109,12 @@ struct LocationCard: View {
                 
                 Text(location.fullAddress ?? "")
                     .font(.caption)
+                
+                if let forecast{
+                    Text("Last updated: \(forecast.lastUpdate.toDateTime())")
+                        .font(.caption)
+                        .opacity(0.8)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             

@@ -26,9 +26,10 @@ struct WeatherView:View {
                 )
                 
                 Text(locations.selectedLocation?.name ?? "--")
-                    .font(.caption)
+                    .font(.subheadline)
                     .fontWeight(.bold)
                     .padding(.bottom)
+                    .foregroundStyle(.white)
             }
             .background(Color(weather.forecast?.currentForecast?.resourceId ?? "cloudy"))
         }

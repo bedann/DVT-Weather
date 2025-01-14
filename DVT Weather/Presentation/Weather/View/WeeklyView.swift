@@ -29,6 +29,7 @@ struct WeeklyView:View {
                     if let weekForecast = forecast?.weekForecast?.summary{
                         ForEach(weekForecast){ daySummary in
                             DaySummaryView(summary: daySummary)
+                                .transition(.slide)
                         }
                     }
                     

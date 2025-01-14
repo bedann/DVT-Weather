@@ -42,9 +42,7 @@ class WeatherViewModel:ObservableObject{
                     self?.error = error.localizedDescription
                 }
             } receiveValue: {[weak self] forecast in
-                withAnimation(.spring){
-                    self?.forecast = forecast
-                }
+                self?.forecast = forecast
             }
             .store(in: &cancellables)
     }
