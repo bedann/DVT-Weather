@@ -25,4 +25,3 @@ Tests not exhaustive, just a little to demonstrate.
     1. **The quick way** - Replace the values (`WEATHER_API_KEY` and `PLACES_API_KEY`) in the info tab of the project target.
     2. **The safe way** - Create `Debug.xcconfig` and `Release.xcconfig` at the project root and add the values each on its own line i.e 
 WEATHER_API_KEY = xxxx
-PLACES_API_KEY = xxxx
