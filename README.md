@@ -24,5 +24,5 @@ Tests not exhaustive, just a little to demonstrate.
 * Add the required API keys for GooglePlaces and OpenWeather. You can do this in two ways:
     1. **The quick way** - Replace the values (`WEATHER_API_KEY` and `PLACES_API_KEY`) in the info tab of the project target.
     2. **The safe way** - Create `Debug.xcconfig` and `Release.xcconfig` at the project root and add the values i.e 
-        WEATHER_API_KEY = xxxx
-        PLACES_API_KEY = xxx
+        ````WEATHER_API_KEY = xxxx````
+        ````PLACES_API_KEY = xxx````
